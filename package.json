@@ -8,5 +8,18 @@
   },
   "keywords": [],
   "author": "Felix Bossio",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "postgres-date": "^2.1.0",
+    "sequelize": "^6.21.1",
+    "swagger-ui-express": "^4.4.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.4.1"
+  }
 }
