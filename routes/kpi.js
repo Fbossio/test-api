@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
     promedio = parseFloat(promedio[0][0].promedio);
 
     let devest_data = await sequelize.query(
-      `SELECT ROUND(sqrt(SUM(("age" - ${promedio}) ^ 2 ) / (COUNT("age") - 1)), 2) AS desv FROM "Clientes";`,
+      `SELECT ROUND(CAST(sqrt(SUM(("age" - ${promedio}) ^ 2 ) / (COUNT("age") - 1)) AS numeric), 2) AS desv FROM "Clientes";`,
       {
         type: QueryTypes.SELECT,
       }
