@@ -12,7 +12,7 @@ module.exports = {
   },
   servers: [
     {
-      url: "http://172.16.1.2:5000",
+      url: "http://159.223.171.1:5000",
     },
     {
       url: "http://localhost:5000",
