@@ -89,222 +89,9 @@ module.exports = {
       get: {
         description: "Operación para obtener información de los clientes",
         parameters: [{ in: "path" }],
-      },
-    },
-    "/courses": {
-      description: "Recurso de cursos",
-      post: {
-        description: "Operación para registrar un array de cursos",
-        parameters: [
-          {
-            name: "cursos",
-            in: "body",
-            required: true,
-            schema: {
-              type: "array",
-              items: {
-                type: "object",
-                properties: {
-                  fullname: {
-                    type: "string",
-                  },
-                  shortname: {
-                    type: "string",
-                  },
-                  categoryid: {
-                    type: "integer",
-                  },
-                  startdate: {
-                    type: "string",
-                  },
-                  enddate: {
-                    type: "string",
-                  },
-                },
-              },
-            },
-          },
-        ],
         responses: {
           200: {
-            description: "Cursos creados exitosamente",
-            content: {
-              "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    courses_requested: {
-                      type: "integer",
-                    },
-                    courses_created: {
-                      type: "integer",
-                    },
-                    courses_not_created: {
-                      type: "integer",
-                    },
-                    courses: {
-                      type: "array",
-                      items: {
-                        type: "object",
-                        properties: {
-                          status: {
-                            type: "integer",
-                          },
-                          courseid: {
-                            type: "integer",
-                          },
-                          shortname: {
-                            type: "string",
-                          },
-                        },
-                      },
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-    "/users": {
-      description: "Recurso de usuarios",
-      post: {
-        description: "Operación para registrar un array de usuarios",
-        parameters: [
-          {
-            name: "usuarios",
-            in: "body",
-            required: true,
-            schema: {
-              type: "array",
-              items: {
-                type: "object",
-                properties: {
-                  firstName: {
-                    type: "string",
-                  },
-                  lastName: {
-                    type: "string",
-                  },
-                  email: {
-                    type: "string",
-                  },
-                },
-              },
-            },
-          },
-        ],
-        responses: {
-          200: {
-            description: "Usuarios creados exitosamente",
-            content: {
-              "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    users_requested: {
-                      type: "integer",
-                    },
-                    users_created: {
-                      type: "integer",
-                    },
-                    users_not_created: {
-                      type: "integer",
-                    },
-                    users: {
-                      type: "array",
-                      items: {
-                        type: "object",
-                        properties: {
-                          status: {
-                            type: "integer",
-                          },
-                          userid: {
-                            type: "integer",
-                          },
-                          username: {
-                            type: "string",
-                          },
-                          email: {
-                            type: "string",
-                          },
-                          password: {
-                            type: "string",
-                          },
-                        },
-                      },
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-    "/enrollments": {
-      description: "Recurso de inscripciones",
-      post: {
-        description: "Operación para inscribir usuarios en cursos",
-        parameters: [
-          {
-            name: "inscripciones",
-            in: "body",
-            required: true,
-            schema: {
-              type: "array",
-              items: {
-                type: "object",
-                properties: {
-                  user: {
-                    type: "object",
-                    properties: {
-                      firstName: {
-                        type: "string",
-                      },
-                      lastName: {
-                        type: "string",
-                      },
-                      email: {
-                        type: "string",
-                      },
-                      role: {
-                        type: "string",
-                      },
-                    },
-                  },
-                  courses: {
-                    type: "array",
-                    items: {
-                      type: "object",
-                      properties: {
-                        fullname: {
-                          type: "string",
-                        },
-                        shortname: {
-                          type: "string",
-                        },
-                        categoryname: {
-                          type: "string",
-                        },
-                        timestart: {
-                          type: "string",
-                        },
-                        duration: {
-                          type: "integer",
-                        },
-                      },
-                    },
-                  },
-                },
-              },
-            },
-          },
-        ],
-        responses: {
-          200: {
-            description: "Usuario inscrito satisfactoriamente",
+            description: "Clientes listados exitosamente",
             content: {
               "application/json": {
                 schema: {
@@ -312,47 +99,78 @@ module.exports = {
                   items: {
                     type: "object",
                     properties: {
-                      usuario_nuevo: {
-                        type: "boolean",
-                      },
-                      username: {
+                      nombre: {
                         type: "string",
                       },
-                      userid: {
+                      apellido: {
+                        type: "string",
+                      },
+                      edad: {
                         type: "integer",
                       },
-                      firstName: {
+                      fecha_nacimiento: {
                         type: "string",
                       },
-                      lastName: {
+                      fecha_prob_muerte: {
                         type: "string",
                       },
-                      email: {
-                        type: "string",
-                      },
-                      password: {
-                        type: "string",
-                      },
-                      enrollment: {
-                        type: "array",
-                        items: {
-                          type: "object",
-                          properties: {
-                            status: {
-                              type: "integer",
-                            },
-                            course: {
-                              type: "string",
-                            },
-                            category: {
-                              type: "string",
-                            },
-                            role: {
-                              type: "string",
-                            },
-                          },
-                        },
-                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+          500: {
+            description: "Error del servidor",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    mensaje: {
+                      type: "string",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    "/api/kpi": {
+      description: "Recurso de indicadores",
+      get: {
+        description: "Operación para obtener indicadores estadísticos",
+        parameters: [{ in: "path" }],
+        responses: {
+          200: {
+            description: "Indicadores obtenidos exitosamente",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    edad_promedio: {
+                      type: "number",
+                    },
+                    desv_estandar: {
+                      type: "number",
+                    },
+                  },
+                },
+              },
+            },
+          },
+          500: {
+            description: "Error del servidor",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    mensaje: {
+                      type: "string",
                     },
                   },
                 },
